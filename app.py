@@ -8,10 +8,14 @@ st.write("Made by fazleazeem71-spec | For Ward Use")
 with st.form("hx"):
     st.subheader("1. Bio Data")
     c1,c2,c3 = st.columns(3)
-    with c1:
+ with c1:
         name = st.text_input("Name")
-        fname = st.text_input("F/H Name")
         sex = st.selectbox("Sex", ["Male","Female"])
+        if sex == "Male":
+            fh_label = "Father Name"
+        else:
+            fh_label = "Husband Name (Father if unmarried)"
+        fh_name = st.text_input(fh_label)
     with c2:
         age = st.number_input("Age", 1, 100, 25)
         address = st.text_input("Address")
