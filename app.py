@@ -1,3 +1,6 @@
+from auth import check_login, supabase
+check_login()
+
 import json
 from datetime import date, timedelta
 
