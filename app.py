@@ -16,6 +16,7 @@ from secure_history import run_secure_history  # Keep your existing secure-histo
 
 # Initialize app state before authentication code accesses session_state.
 defaults = {
+    "user": None,  # Required by auth.py before it checks the login state.
     "current_page": "Home",
     "menu_open": False,
     "history_text": "",
