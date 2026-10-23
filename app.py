@@ -1,3 +1,4 @@
+from secure_history import run_secure_history
 from auth import check_login, supabase
 check_login()
 
