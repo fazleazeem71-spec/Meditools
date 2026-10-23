@@ -14,6 +14,17 @@ st.set_page_config(
 from auth import check_login, supabase  # Keep your existing authentication module.
 from secure_history import run_secure_history  # Keep your existing secure-history module.
 
+# Initialize app state before authentication code accesses session_state.
+defaults = {
+    "current_page": "Home",
+    "menu_open": False,
+    "history_text": "",
+    "saved_cases": [],
+}
+for key, value in defaults.items():
+    if key not in st.session_state:
+        st.session_state[key] = value
+
 check_login()
 
 PAGES = [
@@ -78,16 +89,6 @@ st.markdown(
 )
 
 # -------------------- Session state --------------------
-defaults = {
-    "current_page": "Home",
-    "menu_open": False,
-    "history_text": "",
-    "saved_cases": [],
-}
-for key, value in defaults.items():
-    if key not in st.session_state:
-        st.session_state[key] = value
-
 # A single navigation state avoids the stale selection problem caused by two
 # separate radio widgets trying to control the same page.
 def choose_page():
